@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LastExercise.Views.ListNhanVienPage"
+             Title="List Nhan Vien"
+             x:Name="Page">
+    <ScrollView Margin="0,20,0,0">
+        <Frame CornerRadius="20" BackgroundColor="#B0D0F3">
+            <ListView ItemsSource="{Binding NhanViens}" ItemSelected="ListView_ItemSelected" x:Name="List">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="*,4*, 0.5*">
+                                <Image Source="{Binding IMG}" Grid.Column="0"/>
+                                <StackLayout Orientation="Vertical" Grid.Column="1">
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Desc}" FontSize="15"/>
+                                </StackLayout>
+                                <!--<Button Text="-" BackgroundColor="Red" FontSize="20" TextColor="White" 
+                                        Command="{Binding Source={x:Reference page}, Path=ViewModel.DeleteCommand}"
+							            CommandParameter="{Binding .}"/>-->
+                            </Grid>
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+							    Text="Delete" 
+							    IsDestructive="true" 
+							    Command="{Binding Source={x:Reference Page}, Path=ViewModel.DeleteCommand}"
+							    CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+        
+    </ScrollView>
+</ContentPage>

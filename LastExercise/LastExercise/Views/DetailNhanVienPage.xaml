@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LastExercise.Views.DetailNhanVienPage"
+             xmlns:Controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="Infor"
+             BackgroundColor="#D9D9D8">
+    <Grid RowDefinitions="1.5*,2*,0.4*">
+        <Grid BackgroundColor="#FEF0AB" Grid.Row="0">
+            <Controls:CircleImage Source="{Binding Path=NhanVien.IMG}" HorizontalOptions="Center"/>
+        </Grid>
+        <ScrollView Grid.Row="1">
+            <StackLayout Margin="10,0,10,0" Spacing="5" BackgroundColor="White">
+                <Label Text="{Binding Path=NhanVien.ID}" HorizontalOptions="Center"/>
+                <Label Text="Name" Margin="10,0,0,0"/>
+                <Entry Text="{Binding Path=NhanVien.Name}" HorizontalOptions="Start" Margin="10,0,0,0"/>
+                <Label Text="Date" Margin="10,0,0,0"/>
+                <Entry Text="{Binding Path=NhanVien.Date}" HorizontalOptions="Start" Margin="10,0,0,0"/>
+                <Label Text="Descripstion" Margin="10,0,0,0"/>
+                <Entry Text="{Binding Path=NhanVien.Desc}" HorizontalOptions="Start" Margin="10,0,0,0"/>
+                <Label Text="Path of Image" Margin="10,0,0,0"/>
+                <Entry Text="{Binding Path=NhanVien.IMG}" HorizontalOptions="Start" Margin="10,0,0,0"/>
+            </StackLayout>
+        </ScrollView>
+        <Button Text="update" Grid.Row="2" Margin="20,0,20,5" 
+                BackgroundColor="#1273DE" TextColor="White"
+                Command="{Binding UpdateCommand}"/>
+    </Grid>
+</ContentPage>
