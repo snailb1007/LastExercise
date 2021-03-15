@@ -14,7 +14,7 @@ namespace LastExercise.ViewModels
     {
         private INhanVienStore _nhanVienStore;
         public ICommand LoadDataCommand { get; private set; }
-        //public ICommand AddContactCommand { get; private set; }
+        public ICommand AddNaviCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
         public ObservableCollection<NhanVien> temp { get; private set; } = new ObservableCollection<NhanVien>();
         public ObservableCollection<NhanVien> _nhanViens;
@@ -27,9 +27,11 @@ namespace LastExercise.ViewModels
         public ListNhanVienViewModel(INhanVienStore nhanVienStore)
         {
             _nhanViens = new ObservableCollection<NhanVien>();
-            _nhanVienStore = nhanVienStore; //khai mo connect vs SQLite.                            
+            _nhanVienStore = nhanVienStore; //khai mo connect vs SQLite.
+            //Command
             LoadDataCommand = new Command(async() => await LoadData());
             DeleteCommand = new Command(async x => await DeleteClicked(x));
+            AddNaviCommand = new Command(async ()=> await AddNaviClicked());
         }
         private async Task LoadData()
         {        
@@ -49,6 +51,11 @@ namespace LastExercise.ViewModels
                 temp.Remove(x);
             }
             NhanViens = temp;
+        }
+        private async Task AddNaviClicked()
+        {
+            PageService page = new PageService();
+            await page.PushAsync(new Views.FillNhanVienPage());
         }
         public async Task ItemSelected(NhanVien x)
         {

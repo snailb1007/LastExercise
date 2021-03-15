@@ -4,6 +4,9 @@
              x:Class="LastExercise.Views.ListNhanVienPage"
              Title="List Nhan Vien"
              x:Name="Page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add.png" Command="{Binding AddNaviCommand}"/>
+    </ContentPage.ToolbarItems>
     <ScrollView Margin="0,20,0,0">
         <Frame CornerRadius="20" BackgroundColor="#B0D0F3">
             <ListView ItemsSource="{Binding NhanViens}" ItemSelected="ListView_ItemSelected" x:Name="List">
@@ -16,9 +19,6 @@
                                     <Label Text="{Binding Name}"/>
                                     <Label Text="{Binding Desc}" FontSize="15"/>
                                 </StackLayout>
-                                <!--<Button Text="-" BackgroundColor="Red" FontSize="20" TextColor="White" 
-                                        Command="{Binding Source={x:Reference page}, Path=ViewModel.DeleteCommand}"
-							            CommandParameter="{Binding .}"/>-->
                             </Grid>
                             <ViewCell.ContextActions>
                                 <MenuItem 
