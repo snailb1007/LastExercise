@@ -1,5 +1,4 @@
-﻿
-using LastExercise.Data;
+﻿using LastExercise.Data;
 using LastExercise.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

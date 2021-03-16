@@ -1,6 +1,5 @@
 ﻿
 using LastExercise.Data;
-using LastExercise.Models;
 using LastExercise.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -28,7 +27,7 @@ namespace LastExercise.Views
         }
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await ViewModel.ItemSelected(e.SelectedItem as NhanVien);
+            await ViewModel.ItemSelected(e.SelectedItem as NhanVienViewMode);
         }
     }
 }

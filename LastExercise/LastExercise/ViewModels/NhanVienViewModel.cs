@@ -1,4 +1,6 @@
-﻿namespace LastExercise.ViewModels
+﻿using LastExercise.Models;
+
+namespace LastExercise.ViewModels
 {
     public class NhanVienViewMode : BaseViewModel
     {
@@ -16,7 +18,13 @@
             _img = img;
             _desc = desc;
         }
-
+        public NhanVienViewMode(NhanVien x) {
+            _id = x.ID;
+            _name = x.Name;
+            _date = x.Date;
+            _img = x.IMG;
+            _desc = x.Desc;
+        }
         public int ID
         {
             get { return _id; }

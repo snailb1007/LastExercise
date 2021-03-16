@@ -9,13 +9,13 @@ namespace LastExercise.ViewModels
     public class FillNhanVienViewModel : BaseViewModel
     {
         private static string _img;
-        private SQLiteNhanVienStore _nhanVienStore;
+        private INhanVienStore _nhanVienStore;
         public NhanVienViewMode NhanVien { get; set; } = new NhanVienViewMode();
         public string IMG {
             get { return _img; }
             set { SetProperty(ref _img, value); }
         }
-        public SQLiteNhanVienStore NhanVienStore
+        public INhanVienStore NhanVienStore
         {
             get { return _nhanVienStore; }
             set { SetProperty(ref _nhanVienStore, value); }
@@ -24,7 +24,7 @@ namespace LastExercise.ViewModels
         public ICommand LoadIMGCommand { get; private set; }
         public ICommand ClearCommand { get; private set; }
         //===============================================================
-        public FillNhanVienViewModel(SQLiteNhanVienStore nhanVienStore)
+        public FillNhanVienViewModel(INhanVienStore nhanVienStore)
         {
             _nhanVienStore = nhanVienStore;
             AddClickCommand = new Command(OnAddClicked);
@@ -56,10 +56,8 @@ namespace LastExercise.ViewModels
                 }
                 catch (System.Exception e)
                 {
-
                     await page.DisplayAlert("Failed!", $"Add failed.\n {e.Message}", "OK");
-                }
-                
+                }               
             }
         }
         private void OnLoadIMGClicked()
