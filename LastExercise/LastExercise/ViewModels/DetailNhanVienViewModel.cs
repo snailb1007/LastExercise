@@ -32,14 +32,22 @@ namespace LastExercise.ViewModels
         private async void OnUpdateClicked()
         {
             NhanVien nv = new NhanVien();
+            nv.ID = NhanVien.ID;
             nv.Date = NhanVien.Date;
             nv.Desc = NhanVien.Desc;
             nv.Name = NhanVien.Name;
             nv.IMG = NhanVien.IMG;
             try
             {
-                await _nhanVienStore.UpdateNhanVien(nv);
-                await _pageService.DisplayAlert("Success!", "Added.", "OK");            
+                if (nv.ID >= 0)
+                {
+                    await _nhanVienStore.UpdateNhanVien(nv);
+                    await _pageService.DisplayAlert("Success!", "Added.", "OK");
+                }
+                else
+                {
+                    await _pageService.DisplayAlert("Failed!", "ID is error!", "Ok");
+                }
             }
             catch (System.Exception)
             {
