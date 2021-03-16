@@ -4,19 +4,33 @@
              x:Class="LastExercise.Views.FillNhanVienPage"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              Title="Fill in for in box">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#0693E3"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="1.5*,2*,0.4*">
             <controls:CircleImage Source="{Binding IMG}" Grid.Row="0" HorizontalOptions="Center"/>
             <ScrollView Grid.Row="1">
                 <StackLayout>
-                    <Entry Placeholder="ID..." Keyboard="Numeric"/>
-                    <Entry Placeholder="Name..." Keyboard="Text"/>
-                    <DatePicker BindingContext="{Binding Date}"/>
-                    <Entry Placeholder="Desc..."/>
-                    <Entry Placeholder="Path of image..."/>
+                    <Entry Placeholder="ID..." Keyboard="Numeric" Text="{Binding NhanVien.ID, Mode=TwoWay}"/>
+                    <Entry Placeholder="Name..." Keyboard="Text" Text="{Binding NhanVien.Name, Mode=TwoWay}"/>
+                    <Entry Placeholder="Date of birth..." Text="{Binding NhanVien.Date, Mode=TwoWay}"/>
+                    <Entry Placeholder="Desc..." Text="{Binding NhanVien.Desc, Mode=TwoWay}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Placeholder="Path of image..." Text="{Binding NhanVien.IMG, Mode=TwoWay}"/>
+                        <Button Text="Load image" Command="{Binding LoadIMGCommand}"/>
+                    </StackLayout>
+                    <Button Text="Clear" Command="{Binding ClearCommand}"/>
                 </StackLayout>
             </ScrollView>
-            <Button Text="Add" Margin="20,0,20,0" Command="{Binding AddClickCommand}" TextColor="White" BackgroundColor="Aqua"/>
+            <Button Text="Add" Margin="20,0,20,10" Command="{Binding AddClickCommand}" 
+                     Grid.Row="2"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

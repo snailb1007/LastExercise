@@ -13,9 +13,9 @@ namespace LastExercise.Services
         {
             return await MainPage.DisplayAlert(title, message, ok, cancel);
         }
-        public Task DisplayAlert(string title, string message, string ok)
+        public async Task DisplayAlert(string title, string message, string ok)
         {
-            throw new System.NotImplementedException();
+            await MainPage.DisplayAlert(title, message, ok);
         }
         public async Task<Page> PopAsync()
         {

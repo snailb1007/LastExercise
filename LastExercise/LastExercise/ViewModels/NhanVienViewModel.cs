@@ -7,6 +7,16 @@
         private string _date;
         private string _img;
         private string _desc;
+        public NhanVienViewMode() { }
+        public NhanVienViewMode(int id, string name, string date, string img, string desc)
+        {
+            _id = id;
+            _name = name;
+            _date = date;
+            _img = img;
+            _desc = desc;
+        }
+
         public int ID
         {
             get { return _id; }

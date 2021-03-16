@@ -1,4 +1,5 @@
 ﻿
+using LastExercise.Data;
 using LastExercise.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,8 @@ namespace LastExercise.Views
         private FillNhanVienViewModel ViewModel;
         public FillNhanVienPage()
         {
-            ViewModel = new FillNhanVienViewModel();
+            var x = new SQLiteNhanVienStore(DependencyService.Get<ISQLite>());
+            ViewModel = new FillNhanVienViewModel(x);
             this.BindingContext = ViewModel;
             InitializeComponent();
         }
