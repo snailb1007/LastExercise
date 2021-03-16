@@ -5,25 +5,44 @@
              xmlns:Controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              Title="Infor"
              BackgroundColor="#D9D9D8">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="StackLayout">
+                <Setter Property="Margin" Value="10,0,10,10"/>
+                <Setter Property="Spacing" Value="5"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="10,0,0,0"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Margin" Value="20,0,20,5"/>
+                <Setter Property="BackgroundColor" Value="#1273DE"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid RowDefinitions="1.5*,2*,0.4*">
         <Grid BackgroundColor="#FEF0AB" Grid.Row="0">
             <Controls:CircleImage Source="{Binding Path=NhanVien.IMG}" HorizontalOptions="Center"/>
         </Grid>
         <ScrollView Grid.Row="1">
-            <StackLayout Margin="10,0,10,0" Spacing="5" BackgroundColor="White">
+            <StackLayout>
                 <Label Text="{Binding Path=NhanVien.ID}" HorizontalOptions="Center"/>
-                <Label Text="Name" Margin="10,0,0,0"/>
-                <Entry Text="{Binding Path=NhanVien.Name}" HorizontalOptions="Start" Margin="10,0,0,0"/>
-                <Label Text="Date" Margin="10,0,0,0"/>
-                <Entry Text="{Binding Path=NhanVien.Date}" HorizontalOptions="Start" Margin="10,0,0,0"/>
-                <Label Text="Descripstion" Margin="10,0,0,0"/>
-                <Entry Text="{Binding Path=NhanVien.Desc}" HorizontalOptions="Start" Margin="10,0,0,0"/>
-                <Label Text="Path of Image" Margin="10,0,0,0"/>
-                <Entry Text="{Binding Path=NhanVien.IMG}" HorizontalOptions="Start" Margin="10,0,0,0"/>
+                <Label Text="Name"/>
+                <Entry Text="{Binding Path=NhanVien.Name}"/>
+                <Label Text="Date"/>
+                <Entry Text="{Binding Path=NhanVien.Date}"/>
+                <Label Text="Descripstion"/>
+                <Entry Text="{Binding Path=NhanVien.Desc}"/>
+                <Label Text="Path of Image"/>
+                <Entry Text="{Binding Path=NhanVien.IMG}"/>
             </StackLayout>
         </ScrollView>
-        <Button Text="update" Grid.Row="2" Margin="20,0,20,5" 
-                BackgroundColor="#1273DE" TextColor="White"
-                Command="{Binding UpdateCommand}"/>
+        <Button Text="update" Grid.Row="2" Command="{Binding UpdateCommand}"/>
     </Grid>
 </ContentPage>
