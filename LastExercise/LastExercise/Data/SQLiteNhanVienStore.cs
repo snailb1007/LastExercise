@@ -37,7 +37,6 @@ namespace LastExercise.Data
         public async Task DeleteNhanVien(NhanVien x)
         {
             await _connection.DeleteAsync(x);
-        }
-               
+        }               
     }
 }

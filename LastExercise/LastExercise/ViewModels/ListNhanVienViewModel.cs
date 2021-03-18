@@ -2,6 +2,7 @@
 using LastExercise.Models;
 using LastExercise.Services;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -30,17 +31,16 @@ namespace LastExercise.ViewModels
             LoadDataCommand = new Command(async() => await LoadData());
             DeleteCommand = new Command(async x => await DeleteClicked(x));
             AddNaviCommand = new Command(async ()=> await AddNaviClicked());
-        }
+        }      
         private async Task LoadData()
         {
-            NhanViens = new ObservableCollection<NhanVienViewMode>();
+            NhanViens = new ObservableCollection<NhanVienViewMode>(DSKhoiTao);
             var nhanViens = await _nhanVienStore.GetNhanViensAsync();
-            //NhanViens = DSKhoiTao;           
+            //NhanViens = DSKhoiTao;
             foreach (var x in nhanViens)
             {
                 NhanViens.Add(new NhanVienViewMode(x));
-            }
-            temp = NhanViens;
+            }         
         }
         private async Task DeleteClicked(object obj)
         {
